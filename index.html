@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/29a00776d0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Document</title>
+    <style>
+        .nav{
+            padding:0 20vw;
+            height:12vh;
+            display:flex;
+            align-items: center;
+        }
+        input{
+            height:4.5vh;
+            width:50%;
+            outline: none;
+            padding:0px 10px;
+            font-size: 1.3em;
+            color:#111111;
+        }
+        button{
+            height:5.1vh;
+            padding:0px 20px;
+            font-size: 1.5em;
+            font-weight: lighter;
+        }
+        #box{
+            background: #F9F9F9;
+            padding:30px;
+        }
+        iframe{
+            height:25vh;
+            width:20vw;
+        }
+        .logo{
+            width:15%;
+            height:12vh;
+        }
+        h2{
+        font-family:Roboto, Arial, sans-serif ;
+        font-weight: lighter;
+        }
+        p{
+            color:#606060;
+            font-size: 1.2em;
+            font-family:Roboto, Arial, sans-serif ;
+        }
+        .empty{
+            font-weight: bolder;
+            height:5vh;
+            color:#606060;
+            font-size: 1.5em;
+            font-family:Roboto, Arial, sans-serif ;
+            border-bottom: 1px solid silver;
+            margin-bottom:3vh;
+        }
+.b{
+    display:flex;
+    margin-bottom:30px;
+}
+h3{
+    font-family:Roboto, Arial, sans-serif ;   
+    color:#696969;
+    font-weight: lighter;
+}
+.para{
+    padding:0 20px;
+    width:50%;
+}
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <img class="logo" src="th.jfif" alt="">
+        <input type="text" id="input" placeholder="Search for videos">
+        <button onclick="getPosts()">Search</button>
+    </div>
+    <div class="para"></div>
+<div id="box"></div>
+    <script>
+
+$(document).ready(function(data){
+$.ajax("https://www.googleapis.com/youtube/v3/search?part=snippet&id=1&key=AIzaSyAv0sTrHeInpe1A2-uEOrEnzoJkjlu3htw", {
+    data: {
+            maxResults: 10,
+            type: 'video',
+            videoEmbeddable: true,
+        },
+    success: function(data){
+            console.log(data) 
+$('#box').append(`
+<div class="empty"><i class="fas fa-align-right"></i>Filter</div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[0].id.videoId} id="frame" allowfullscreen></iframe>
+<div class="para"><h2>${data.items[0].snippet.title}</h2>
+<h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[0].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[0].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[1].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[1].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[1].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[1].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[2].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[2].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[2].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[2].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[3].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[3].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[3].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[3].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[4].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[4].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[4].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[4].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[5].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[5].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[5].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[5].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[6].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[6].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[6].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[6].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[7].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[7].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[7].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[7].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[8].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[8].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[8].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[8].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[9].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[9].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[9].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[9].snippet.publishedAt}</p></div></div>
+`)
+        },
+    error:function (ajax, status){
+        console.log(ajax,status);
+    }
+})
+
+})
+
+
+function getPosts(){
+    var inp=$('#input').val();
+      $.ajax({
+        type: 'GET',
+        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&ID=1&key=AIzaSyAv0sTrHeInpe1A2-uEOrEnzoJkjlu3htw&q='+ `${inp}`,
+        data: {
+            maxResults: 10,
+            type: 'video',
+            videoEmbeddable: true,
+        },
+        success: function(data){
+            $('#box').empty()
+            console.log(data) 
+$('#box').append(`
+<div class="empty"><i class="fas fa-align-right"></i>Filter</div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[0].id.videoId} id="frame" allowfullscreen></iframe>
+<div class="para"><h2>${data.items[0].snippet.title}</h2>
+    <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[0].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[0].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[1].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[1].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[1].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[1].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[2].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[2].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[2].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[2].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[3].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[3].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[3].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[3].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[4].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[4].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[4].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[4].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[5].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[5].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[5].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[5].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[6].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[6].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[6].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[6].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[7].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[7].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[7].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[7].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[8].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[8].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[8].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[8].snippet.publishedAt}</p></div></div>
+<div class="b">
+    <iframe src=${'https://www.youtube.com/embed/' + data.items[9].id.videoId} id="frame" allowfullscreen></iframe>
+    <div class="para"><h2>${data.items[9].snippet.title}</h2>
+        <h3>${data.items[0].snippet.description}</h3>
+<p>${data.items[9].snippet.channelTitle}<i class="fas fa-check-circle"></i><br/>Publish &nbsp;${data.items[9].snippet.publishedAt}</p></div></div>
+`)
+        },
+        error: function(response){
+            console.log("Request Failed");
+        }
+      });
+    }
+
+
+    </script>
+</body>
+</html>
